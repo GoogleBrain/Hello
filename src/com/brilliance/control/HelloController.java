@@ -1,4 +1,4 @@
-package com.brilliance.contro;
+package com.brilliance.control;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -128,7 +128,7 @@ public class HelloController {
 		RequestTextMessage re = new RequestTextMessage();
 		re.setMsgType("text");
 		re.setEvent("text");
-		re.setContent("3");
+		re.setContent("2");
 		System.out.println(new HelloController().getReplyTextMessage(re, "To", "From"));
 	}
 }
