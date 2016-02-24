@@ -72,7 +72,10 @@ public class HelloController {
 		reMess.setCreateTime(new Long(new Date().getTime()).toString());
 		String mt = msg.getMsgType();
 		String event = msg.getEvent();
-		String content = msg.getContent().trim();
+		String content = "";
+		if (FinalConstantUtil.Event.TEXT.equals(mt)) {
+			content = msg.getContent().trim();
+		}
 		boolean flag = true;
 		if (FinalConstantUtil.Event.EVENT.equals(mt) && FinalConstantUtil.Event.SUBSCRIBE.equals(event)) {
 			// 关注事件
@@ -119,16 +122,23 @@ public class HelloController {
 			reMess.setArticles(items);
 		}
 		reMess.setFuncFlag("<![CDATA[0]]>");
-		String returnMessage=XmlAndObj.ObjectToXml(reMess, flag, "Articles").replaceAll("&lt;", "<").replaceAll("&gt;", ">");
+		String returnMessage = XmlAndObj.ObjectToXml(reMess, flag, "Articles").replaceAll("&lt;", "<")
+				.replaceAll("&gt;", ">");
 		log.info("return 2 weixin client >>>>>" + returnMessage);
 		return returnMessage;
 	}
 
 	public static void main(String[] args) {
-		RequestTextMessage re = new RequestTextMessage();
-		re.setMsgType("text");
-		re.setEvent("text");
-		re.setContent("2");
-		System.out.println(new HelloController().getReplyTextMessage(re, "To", "From"));
+		// RequestTextMessage re = new RequestTextMessage();
+		// re.setMsgType("text");
+		// re.setEvent("text");
+		// re.setContent("2");
+		// System.out.println(new HelloController().getReplyTextMessage(re,
+		// "To", "From"));
+
+		String postData = "<xml><ToUserName><![CDATA[gh_660a5a51574e]]></ToUserName><FromUserName><![CDATA[oH7eiv3w6cOVOzvHHK-sxdDe2tHg]]></FromUserName><CreateTime>1456322892</CreateTime><MsgType><![CDATA[event]]></MsgType><Event><![CDATA[subscribe]]></Event><EventKey><![CDATA[]]></EventKey></xml>";
+		RequestTextMessage msg = (RequestTextMessage) XmlAndObj.XmlToObject(RequestTextMessage.class, postData);
+		String returnXml = new HelloController().getReplyTextMessage(msg, msg.getFromUserName(), msg.getToUserName());
+		System.out.println(returnXml);
 	}
 }
