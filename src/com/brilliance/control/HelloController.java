@@ -91,7 +91,7 @@ public class HelloController {
 			// 回复图片
 			reMess.setMsgType("<![CDATA[image]]>");
 			Image image = new Image();
-			image.setMediaId("<![CDATA[f29v8KUftcQUkIamap1KR-dmA4ACqe00eDrMhM2cWxa40UeuAnZH-nemOyZ_WSeu]]>");
+			image.setMediaId("<![CDATA[wlXmW0hZQW5pW_5O2bsASxUiITRAHDY90zgpQsZ-cw4qvLYx2YqcMhjdC2LqkfmN]]>");
 			reMess.setImage(image);
 			flag = false;
 		} else if (FinalConstantUtil.Event.TEXT.equals(mt) && "3".equals(content)) {
@@ -120,6 +120,11 @@ public class HelloController {
 			item3.setUrl("<![CDATA[http://www.ifeng.com]]>");
 			items.add(item3);
 			reMess.setArticles(items);
+		} else {
+			// 回复文本
+			reMess.setMsgType("<![CDATA[text]]>");
+			reMess.setContent("<![CDATA[查无结果]]>");
+			flag = false;
 		}
 		reMess.setFuncFlag("<![CDATA[0]]>");
 		String returnMessage = XmlAndObj.ObjectToXml(reMess, flag, "Articles").replaceAll("&lt;", "<")
