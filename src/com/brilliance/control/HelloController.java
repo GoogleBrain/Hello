@@ -73,8 +73,13 @@ public class HelloController {
 		String mt = msg.getMsgType();
 		String event = msg.getEvent();
 		String content = "";
+		String eventKey = "";
 		if (FinalConstantUtil.Event.TEXT.equals(mt)) {
 			content = msg.getContent().trim();
+		}
+
+		if (FinalConstantUtil.Event.CLICK.equals(event)) {
+			eventKey = msg.getEventKey();
 		}
 		boolean flag = true;
 		if (FinalConstantUtil.Event.EVENT.equals(mt) && FinalConstantUtil.Event.SUBSCRIBE.equals(event)) {
@@ -120,6 +125,10 @@ public class HelloController {
 			item3.setUrl("<![CDATA[http://www.ifeng.com]]>");
 			items.add(item3);
 			reMess.setArticles(items);
+		} else if (FinalConstantUtil.Event.CLICK.equals(event) && "select".equals(eventKey)) {
+			reMess.setMsgType("<![CDATA[text]]>");
+			reMess.setContent("<![CDATA[逗你玩呢，现在还没发查询]]>");
+			flag = false;
 		} else {
 			// 回复文本
 			reMess.setMsgType("<![CDATA[text]]>");

@@ -16,6 +16,8 @@ public class FinalConstantUtil {
 
 		// 事件
 		public static final String EVENT = "event";
+		
+		public static final String CLICK="CLICK";
 
 		// 文本
 		public static final String TEXT = "text";
