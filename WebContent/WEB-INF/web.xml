@@ -3,6 +3,16 @@
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
+
+
+	<!-- 加载spring-quartz 定时执行模块 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath:quartz_data.xml
+		</param-value>
+	</context-param>
+
 	<!-- 获取token -->
 	<servlet>
 		<servlet-name>token</servlet-name>
@@ -16,6 +26,10 @@
 		<servlet-class>com.brilliance.function.MenuFunction</servlet-class>
 		<load-on-startup>2</load-on-startup>
 	</servlet>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 
 	<servlet>
 		<servlet-name>springmvc</servlet-name>

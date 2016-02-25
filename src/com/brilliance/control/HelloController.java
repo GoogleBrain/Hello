@@ -129,6 +129,10 @@ public class HelloController {
 			reMess.setMsgType("<![CDATA[text]]>");
 			reMess.setContent("<![CDATA[逗你玩呢，现在还没发查询]]>");
 			flag = false;
+		} else if (FinalConstantUtil.Event.CLICK.equals(event) && "help".equals(eventKey)) {
+			reMess.setMsgType("<![CDATA[text]]>");
+			reMess.setContent("<![CDATA[逗你玩呢，现在还没发查询]]>");
+			flag = false;
 		} else {
 			// 回复文本
 			reMess.setMsgType("<![CDATA[text]]>");

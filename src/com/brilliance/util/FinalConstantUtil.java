@@ -16,8 +16,8 @@ public class FinalConstantUtil {
 
 		// 事件
 		public static final String EVENT = "event";
-		
-		public static final String CLICK="CLICK";
+
+		public static final String CLICK = "CLICK";
 
 		// 文本
 		public static final String TEXT = "text";
@@ -29,12 +29,19 @@ public class FinalConstantUtil {
 		public static final String UNSUBSCRIBE = "unsubscribe";
 	}
 
+	// 餐单URL
 	public static class Menu {
 		public static final String MENU_URL = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=";
 	}
 
+	// TokenURL
 	public static class Token {
 		public static final String TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
+	}
+
+	// 模板消息URL
+	public static class Message {
+		public static final String TEMPLATE_URL = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=";
 	}
 
 }
