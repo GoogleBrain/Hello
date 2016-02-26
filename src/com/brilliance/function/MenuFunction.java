@@ -37,7 +37,7 @@ public class MenuFunction extends HttpServlet {
 	public void postMethod() throws Exception {
 		Map<String, String> map1 = new HashMap<>();
 		map1.put("type", "click");
-		map1.put("name", "查询");
+		map1.put("name", "天气查询");
 		map1.put("key", "select");
 
 		Map<String, String> map2 = new HashMap<>();
@@ -77,7 +77,8 @@ public class MenuFunction extends HttpServlet {
 		log.info("menu Info >>>>" + ja.toString());
 
 		JSONObject jsonObject = HttpUtil.httpRequest(
-				FinalConstantUtil.Menu.MENU_URL + AccessTokenUtil.getTokenInstance().getToken(), "POST", ja.toString());
+				FinalConstantUtil.Menu.MENU_URL + AccessTokenUtil.getTokenInstance().getToken(), "POST", ja.toString(),
+				null);
 		if (null != jsonObject) {
 			log.info("create menu >>>>" + jsonObject);
 		}

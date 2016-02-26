@@ -29,7 +29,7 @@ public class AccessTokenUtil extends HttpServlet {
 		log.info("Create AccessToken start>>>>>");
 		String requestUrl = FinalConstantUtil.Token.TOKEN_URL.trim().replace("APPID", FinalConstantUtil.Public.APPID)
 				.replace("APPSECRET", FinalConstantUtil.Public.APPSECRET);
-		JSONObject jsonObject = HttpUtil.httpRequest(requestUrl, "GET", null);
+		JSONObject jsonObject = HttpUtil.httpRequest(requestUrl, "GET", null, null);
 		if (null != jsonObject) {
 			try {
 				accessToken = new AccessToken();

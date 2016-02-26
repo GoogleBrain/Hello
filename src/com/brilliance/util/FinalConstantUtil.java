@@ -10,6 +10,10 @@ public class FinalConstantUtil {
 		public static final String APPID = "wxad7fb06d082f15c5";
 
 		public static final String APPSECRET = "d4624c36b6795d1d99dcf0547af5443d";
+
+		// 百度科技天气接口
+		public static final String APIKEY = "7e9ac3d26d0c41374bc4784b000af490";
+
 	}
 
 	public static class Event {
@@ -42,6 +46,11 @@ public class FinalConstantUtil {
 	// 模板消息URL
 	public static class Message {
 		public static final String TEMPLATE_URL = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=";
+	}
+
+	// 天气预报URL
+	public static class Whether {
+		public static final String WEHTHER_URL = "http://apis.baidu.com/apistore/weatherservice/cityname?cityname=北京";
 	}
 
 }

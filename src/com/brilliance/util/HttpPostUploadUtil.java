@@ -25,7 +25,7 @@ public class HttpPostUploadUtil {
 		String filepath = "D:\\a.png";
 		String requestUrl = FinalConstantUtil.Token.TOKEN_URL.trim().replace("APPID", FinalConstantUtil.Public.APPID)
 				.replace("APPSECRET", FinalConstantUtil.Public.APPSECRET);
-		JSONObject jsonObject = HttpUtil.httpRequest(requestUrl, "GET", null);
+		JSONObject jsonObject = HttpUtil.httpRequest(requestUrl, "GET", null,null);
 		String token = jsonObject.getString("access_token");
 
 		String urlStr = "https://api.weixin.qq.com/cgi-bin/media/upload?access_token=" + token + "&type=image";

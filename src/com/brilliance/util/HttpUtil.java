@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Map;
+import java.util.Set;
 
 import net.sf.json.JSONObject;
 
@@ -13,7 +15,8 @@ public class HttpUtil {
 	/**
 	 * http请求
 	 */
-	public static JSONObject httpRequest(String request, String RequestMethod, String output) {
+	public static JSONObject httpRequest(String request, String RequestMethod, String output,
+			Map<String, String> headParams) {
 		JSONObject jsonObject = null;
 		StringBuffer buffer = new StringBuffer();
 		try {
@@ -23,6 +26,12 @@ public class HttpUtil {
 			connection.setDoOutput(true);
 			connection.setDoInput(true);
 			connection.setUseCaches(false);
+			if (headParams != null) {
+				Set<String> keys = headParams.keySet();
+				for (String str : keys) {
+					connection.setRequestProperty(str, headParams.get(str.trim()));
+				}
+			}
 			connection.setRequestMethod(RequestMethod);
 			if (output != null) {
 				OutputStream out = connection.getOutputStream();
